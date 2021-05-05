@@ -1,0 +1,140 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
+
+public class CanvasUIFunctions : MonoBehaviour
+{
+    [Header("Title Scene Properties", order = 0)]
+    [Space(2f)]
+    [Header("Intro Scene Properties", order = 1)]
+    public GameObject introImage;
+    public GameObject backButton;
+    public GameObject nextButton;
+    public Color backgroundColor;
+    public TMP_Text introText;
+    [Header("Tutorial Scene Properties", order = 2)]
+    [Space(2f)]
+    [Header("Level01 Scene Properties", order = 3)]
+
+    int introSequence;
+    Scene currentScene;
+
+    public void SetScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    private void Awake()
+    {
+        currentScene = SceneManager.GetActiveScene();
+        switch (currentScene.name)
+        {
+            case "00TitleScene":
+                break;
+            case "01IntroScene":
+                introText.text = "Welcome to Pre-Geometry Fundamentals!\n\n" +
+                    "Learn the crucial information needed to learn Geometry!";
+                introImage.SetActive(true);
+                backButton.SetActive(false);
+                break;
+            case "02TutorialScene":
+                break;
+            case "03Level01Scene":
+                break;
+        }
+    }
+
+    public void IntroSequenceBack()
+    {
+        introSequence = introSequence - 2;
+        IntroSequenceNext();
+    }
+
+    public void IntroSequenceNext()
+    {
+        introSequence++;
+        switch (introSequence)
+        {
+            case 0:
+     
+                introText.horizontalAlignment = HorizontalAlignmentOptions.Center;
+                introText.text = "Welcome to Pre-Geometry Fundamentals!\n\n" +
+                    "Learn the crucial information needed to learn Geometry!";
+                introImage.SetActive(true);
+                backButton.SetActive(false);
+                break;
+            case 1:
+                introImage.SetActive(false);
+                backButton.SetActive(true);
+               introText.horizontalAlignment = HorizontalAlignmentOptions.Left;
+                introText.text = "OVERVIEW\n\n" +
+                    "Title: Pre-Geometry Fundamentals\n" +
+                    "Platform: WebGL build\n" +
+                    "Subject: Math\n" +
+                    "Sub Subject: Geometry\n" +
+                    "Main Focus: Planes and Solids (2D&3D)\n" +
+                    "Learning Level: Grades 6=10";
+                break;
+            case 2:
+                introText.text = "PROPOSED EDUCATIONAL SOFTWARE SOLUTION TO A LEARNING PROBLEM\n\n" +
+                    "Many students in struggle with the transition from Algebra to Geometry in their high school curriculum. Geometry is a spatial and logical intensive course that students are not well equipped or prepared for due to learning Algebra in the previous grade. Textbooks are difficult to understand when it comes to 3D shapes. These lessons can be better taught in a AR/VR environment with real life examples that are augmented in AR or generated examples in VR. With the help of AR/VR, students will learn geometry in a much friendlier environment and have a greater understanding of what they are learning using real-life objects. Lessons taught in geometry will be reinforced throughout the project and students will be able to refer back for basic fundamentals of geometry for their high school course. This software is focused solely on providing information needed to understand Geometry and reinforce ideas taught in geometry when the student needs help. Teachers can use it as a way to help students refer back to fundamentals that are critical in understanding geometry such as coordinate grids, basic shapes, angles and degrees, etc. This software is NOT meant to teach geometry but to aid in the learning and understanding of geometry. While AR/VR would be ideal for this software, for the purposes of this course it will be demonstrated in WebGL Build.";
+                break;
+            case 3:
+                introText.text = "COMPETING SOFTWARE REVIEW\n\n" +
+                    "Geogebra: The application covers multiple math subjects but specifically for its geometry portion it allows users to create points, segments, lines, planes, etc. with its software. It has a suggested audience of K-12 and even college level teachings.\n" +
+                    "Khanacademy: This webpage by Khan academy has a series of videos on geometry with a level system that is reminiscent of a video game. The strictly only video format allows users to come back, pause, and review material easily. After each completed video, a series of questions can be answered to reinforce material learned and to gain experience to level up the user’s account.\n" +
+                    "Math VR: Another app meant for a K-12 audience, this app allows users to create 3D models for a thorough understanding of theorems and concepts in geometry. Users are not limited to geometry; they can explore other subjects as well.";
+                break;
+            case 4:
+                introText.text = "COMPETING SOFTWARE SUGGESTED IMPROVEMENTS\n\n" +
+                    "Visuals and Graphics/Overall aesthetic– Each competing software can use a more friendly and polished look to grab users attention. Geogebra is arguably the best because of its basic design meant to grab a wide range audience. However, its default white background can be irritating to the eyes after long usage.\n" +
+                    "Progression- Each competing software can use some sort of progression method so that the user can have a visual indicator of their progress in the subject material. For comparison, Duolingo will give you a progression meter for different topics you are learning in the language you have chosen. In the three-competing software, no such indicator is available except in Khan academy. However, it is not as good as it can because the visual is small and does not really engage the user to try and learn.\n" +
+                    "Tools/Resources Interaction - Each competing software needs more resources available to the user such as a compass, ruler, and other necessary tools for geometry. Measurements are also a key factor in learning and can reinforce/enhance a user’s ability to understand the material being taught.";
+                break;
+            case 5:
+                introText.text = "STAKEHOLDERS\n\n" +
+                    "Teachers\n" +
+                    "Parents\n" +
+                    "Students\n\n" +
+                    "USERS\n\n" +
+                    "6-10th grade students\n" +
+                    "Teachers";
+                break;
+            case 6:
+                introText.text = "PERSONA\n\n" +
+                    "Name: Michael\n" +
+                    "Age: 14\n" +
+                    "Gender: Male\n" +
+                    "Location: Suburbs in New Jersey, USA\n" +
+                    "Personal Notes:\n" +
+                    "Volunteers at local animal shelter\n" +
+                    "Loves playing video games\n" +
+                    "Introverted and very shy\n" +
+                    "Student Notes:\n" +
+                    "Struggles understanding/recognizing patterns\n" +
+                    "In tune and proficient with technology\n" +
+                    "Hands on type of student, has a hard time focusing and retaining information from text/lectures\n";
+                break;
+            case 7:
+                introText.text = "JUSTIFICATION OF PERSONA DECISIONS\n\n" +
+                    "Michael is the perfect fit to be the persona and user for the software because he is a student that has little time outside of school to stay after class and ask help or set up conference calls during a pandemic for help from his teacher. Therefore, this software will help him understand what he fails to learn in class. In extreme to last minute situations Michael does use his time to ask for help but he prefers not to ask due to being shy.";
+                break;
+            case 8:
+                introText.text = "PROBLEM SCENARIO\n\n" +
+                    "Michael’s least favorite subject and the one he struggles the most in school is math. When it came time to learn Geometry in school, Michael was not very fond of how drastically different it was from algebra and all the numerical math he has learned prior to Geometry. Michael found it hard to understand topics in Geometry from a book and hearing his teacher speak because he kept asking himself why is he learning about shapes when he can interact with the shapes in real life and have a better understanding.";
+                break;
+            case 9:
+                nextButton.SetActive(true);
+                introText.text = "ACTIVITY SCENARIO\n\n" +
+                    "Michael’s Geometry teacher realizes Michael is having a hard time understanding the material and is not paying attention in class. The teacher notices that Michael does show some understanding of the material, but he is not fully executing to his full potential; Michael is just barely passing with D’s and one C so far on quizzes.\n" +
+                    "Michael’s teacher suggests that his students download Pre-Geometry Fundamentals in order to help students understand the material better. Michael tries it out and is finding Geometry to be enjoyable as he can see what he is learning and can interact with the shapes. He is making progress in each subtopic in Geometry and is having fun playing around with the shapes.";
+                break;
+            case 10:
+                nextButton.SetActive(false);
+                introText.text = "PROBLEM STATEMENT\n\n" +
+                    "Michael always found it difficult to learn new subjects if they don’t involve any hands on or visual lessons. Most classrooms do not accommodate for every learning style and subjects vary in difficulty for each student. To prevent Michael from slowly failing his Geometry class, a visual and hands on reminder should help him focus and learn.";
+                break;
+
+        }
+    }
+}
